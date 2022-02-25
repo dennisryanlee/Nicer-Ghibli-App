@@ -1,19 +1,19 @@
 import React from "react";
-import { Navlink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <>
-      <Navlink exact to="/" className="btn btn-primary nav-link" activeClassName="makethisstandoutsinceitisitheactivelink">
+    <nav className="d-flex justify-content-center mt-3">
+      <Link exact to="/" className="btn btn-primary nav-link mx-2 text-light">
         Home
-      </Navlink>
-      <Navlink exact to="/films" className="btn btn-primary nav-link" activeClassName="makethisstandoutsinceitisitheactivelink">
+      </Link>
+      <Link exact to="/films" className="btn btn-primary nav-link mx-2 text-light">
         Films
-      </Navlink>
-      <Navlink exact to="/characters" className="btn btn-primary nav-link" activeClassName="makethisstandoutsinceitisitheactivelink">
+      </Link>
+      <Link exact to="/characters" className="btn btn-primary nav-link mx-2 text-light">
         Characters
-      </Navlink>
-    </>
+      </Link>
+    </nav>
   );
 };
 
