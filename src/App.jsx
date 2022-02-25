@@ -1,22 +1,22 @@
-//*IMPORTS
+//*Imports
 import { React, useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//*COMPONENTS
+//*Components
 import Home from "./components/Home";
-import Characters from "./components/Characters";
-import CharacterDetails from "./components/CharacterDetails";
+import Navbar from "./components/Navbar";
 import Films from "./components/Films";
 import FilmDetails from "./components/FilmDetails";
-import Navbar from "./components/Navbar";
+import Characters from "./components/Characters";
+import CharacterDetails from "./components/CharacterDetails";
 import ErrorLanding from "./components/ErrorLanding";
 
 const App = () => {
   const [films, setFilms] = useState([]); // controls the films state
   const [people, setPeople] = useState([]); // controls the people state
 
-  const history = useHistory();
+  //   const history = useHistory();
 
   const getData = async () => {
     try {
@@ -34,7 +34,7 @@ const App = () => {
     } catch (error) {
       //!change this to an implicit return and send user to ErrorLanding view
       // displays an error page if fetch is unsuccessful
-      history.push("/errorlanding");
+      //   history.push("/errorlanding");
     }
   };
 
