@@ -93,7 +93,7 @@ export default App;
 /**
  *
  * todo make error landing page work
- * todo lab review video to get nicer film details for characters
+ * todo lab review video to get nicer film details for characters - 21:51 or 26:00
  * todo useParams thing for the details pages
  * todo locations can incorporate people and films
  * todo make JSON buttons appear at the bottom of each card
