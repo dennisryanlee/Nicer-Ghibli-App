@@ -24,7 +24,7 @@ const Characters = (props) => {
             <div key={character.id} className="card col-md-6">
               <div className="card-body">
                 <h5 className="card-title">
-                  {character.name} | {character.gender} | {character.age}
+                  {character.name}, {character.gender}, {character.age}
                 </h5>
                 <h6 className="card-subtitle mb-2 text-muted">
                   Eye-color: {character.eye_color} | Hair-Color: {character.hair_color}

@@ -13,6 +13,9 @@ const Navbar = () => {
       <Link exact to="/characters" className="btn btn-primary nav-link mx-2 text-light">
         Characters
       </Link>
+      <Link exact to="/locations" className="btn btn-primary nav-link mx-2 text-light">
+        Locations
+      </Link>
     </nav>
   );
 };
