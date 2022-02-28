@@ -34,7 +34,9 @@ const Films = (props) => {
               <div className="card-body">
                 <h5 className="card-title">{movie.title}</h5>
                 <p className="card-text">{movie.description.substring(0, 75) + "..."}</p>
-                <button className="btn btn-success btn-sm">Details</button>
+                <Link to={`/films/${movie.id}`} className="btn btn-success btn-sm">
+                  Details
+                </Link>
               </div>
             </div>
           ))}
