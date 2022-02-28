@@ -8,3 +8,9 @@ const FilmDetails = () => {
 };
 
 export default FilmDetails;
+
+{
+  /* <Link to="/films" className="btn btn-primary">
+Back to Films
+</Link> */
+}

@@ -8,3 +8,9 @@ const LocationDetails = () => {
 };
 
 export default LocationDetails;
+
+{
+  /* <Link to="/locations" className="btn btn-primary">
+    Back to Locations
+</Link> */
+}

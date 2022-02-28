@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Films = (props) => {
-  // props.movies is the movies object
-
+  /**
+   * props.movies
+   * props.characters
+   * props.locations
+   */
   const getCharacters = (movie) => {
     let characterIDs = movie.people.map((char) => char.substring(39)).filter((onlystrings) => onlystrings); // characterIDs is an array of character IDs in a particular movie
     /**
@@ -25,6 +28,28 @@ const Films = (props) => {
   return (
     <>
       <div className="container">
+        <div className="row justify-content-center mt-5">
+          {props.movies.map((movie) => (
+            <div key={movie.id} className="card col-md-6">
+              <div className="card-body">
+                <h5 className="card-title">{movie.title}</h5>
+                <p className="card-text">{movie.description.substring(0, 75) + "..."}</p>
+                <button className="btn btn-success btn-sm">Details</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Films;
+
+//***this will be the big description */
+
+{
+  /* <div className="container">
         <div className="row justify-content-center mt-5">
           {props.movies.map((movie) => (
             <div key={movie.id} className="card col-md-6">
@@ -53,9 +78,5 @@ const Films = (props) => {
             </div>
           ))}
         </div>
-      </div>
-    </>
-  );
-};
-
-export default Films;
+      </div> */
+}

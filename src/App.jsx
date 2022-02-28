@@ -15,9 +15,15 @@ import Locations from "./components/Locations";
 import LocationDetails from "./components/LocationDetails";
 
 const App = () => {
-  const [films, setFilms] = useState([]); // controls the films state
-  const [people, setPeople] = useState([]); // controls the people state
-  const [locations, setLocations] = useState([]); // controls the locations state
+  const [films, setFilms] = useState([]);
+  const [people, setPeople] = useState([]);
+  const [locations, setLocations] = useState([]);
+
+  /**
+   * props.movies
+   * props.characters
+   * props.locations
+   */
 
   //   const history = useHistory();
 
@@ -38,7 +44,7 @@ const App = () => {
       // fetches data from the api for locations
       const response3 = await fetch("https://ghibliapi.herokuapp.com/locations"); // this is the fetch
       const locationdata = await response3.json(); // parses the response as JSON data to produce a JS object
-      console.log(locationdata); // logs the locations object
+      // console.log(locationdata); // logs the locations object
       setLocations(locationdata); // passes the locations object to the locations state, which is then sent to the components
     } catch (error) {
       //!change this to an implicit return and send user to ErrorLanding view
@@ -60,21 +66,21 @@ const App = () => {
         </Route>
 
         <Route exact path="/films">
-          <Films characters={people} movies={films} />
+          <Films characters={people} movies={films} locations={locations} />
         </Route>
         <Route exact path="/films/:filmid">
           <FilmDetails />
         </Route>
 
         <Route exact path="/characters">
-          <Characters characters={people} movies={films} />
+          <Characters characters={people} movies={films} locations={locations} />
         </Route>
         <Route exact path="/character/:characterid">
           <CharacterDetails />
         </Route>
 
         <Route exact path="/locations">
-          <Locations characters={people} movies={films} location={locations} />
+          <Locations characters={people} movies={films} locations={locations} />
         </Route>
         <Route exact path="/locations/:locationid">
           <LocationDetails />

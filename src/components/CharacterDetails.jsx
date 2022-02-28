@@ -8,3 +8,9 @@ const CharacterDetails = () => {
 };
 
 export default CharacterDetails;
+
+{
+  /* <Link to="/characters" className="btn btn-primary">
+Back to Characters
+</Link> */
+}
