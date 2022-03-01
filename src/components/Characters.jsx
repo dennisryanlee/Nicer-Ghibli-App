@@ -8,32 +8,6 @@ const Characters = (props) => {
    * props.locations
    */
 
-  const getMovieTitle = (character) => {
-    // console.log(character);
-    /**
-     * for each character, get that characters films at [0] and get the id
-     * then for each movie, compare that movie id to the character film id
-     * if they match, return it
-     *
-     *
-     */
-    // let movieIDfromChar = character.films[0].substring(38); // this is the movie id from the character
-    // props.movies.forEach((film) => {
-    //   props.characters.forEach((char) => {
-    //     if (char.films[0].substring(38) === film.id) {
-    //       return film.title;
-    //     }
-    //   });
-    // });
-    // for (let i = 0; i <= props.films.length; i++) {
-    //   // this will go thru each film
-    //   let movieIDfromMovie = props.films[i].id; // this is the movie id, which we are looking to match to the movie id from character
-    //   if (movieIDfromChar === movieIDfromMovie) {
-    //     return props.films[i].title; // if it is a match, then return the title
-    //   }
-    // }
-  };
-
   return (
     <>
       <div className="container">

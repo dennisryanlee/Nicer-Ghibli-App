@@ -4,12 +4,17 @@ import { useParams } from "react-router-dom";
 const LocationDetails = (props) => {
   const { locationid } = useParams();
   const [locationData, setLocationData] = useState();
+  /**
+   * props.movies - array of movie objects
+   * props.characters - array of movie characters
+   * props.locations
+   */
 
   useEffect(() => {
     fetch(`https://ghibliapi.herokuapp.com/locations/${locationid}`)
       .then((response) => response.json())
       .then((thisLocation) => setLocationData(thisLocation));
-  }, []);
+  }, [locationid]);
 
   return (
     <>

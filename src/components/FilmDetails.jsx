@@ -4,14 +4,22 @@ import { useParams } from "react-router-dom";
 const FilmDetails = (props) => {
   const { filmid } = useParams();
   const [filmData, setFilmData] = useState();
+  /**
+   * props.movies - array of movie objects
+   * props.characters - array of movie characters
+   * props.locations
+   */
 
   let cast = []; // this will be pushed into when a cast member from the list of characters is found.  this will then be mapped over for our page
   const getCast = () => {
     let castIDs = filmData?.people.map((char) => char.substring(39)); // makes an array containing the cast IDs
-    castIDs?.forEach((castMember) => {
+    castIDs?.forEach((castMembers) => {
+      // first, look inside the list of cast IDs
       // castMember is a single cast member's ID
       props.characters.forEach((character) => {
-        if (castMember === character.id) {
+        // then look inside the list of characters
+        if (castMembers === character.id) {
+          // if a cast id matches a character id, add the character name to the cast array
           cast.push(character.name);
         }
       });
@@ -36,7 +44,7 @@ const FilmDetails = (props) => {
     fetch(`https://ghibliapi.herokuapp.com/films/${filmid}`)
       .then((response) => response.json())
       .then((thisFilm) => setFilmData(thisFilm));
-  }, [filmData]);
+  }, [filmid]);
 
   return (
     <>
@@ -53,7 +61,7 @@ const FilmDetails = (props) => {
               </h6>
               <p className="card-text">{filmData?.description}</p>
 
-              {/* {cast.length ? <h5>Characters:</h5> : <h5>No cast listed :/</h5>} */}
+              {cast.length ? <h5>Characters:</h5> : <h5>No cast listed :/</h5>}
               <ul>
                 {getCast().map((item) => (
                   <li key={item}>{item}</li>
