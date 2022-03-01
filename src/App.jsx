@@ -75,7 +75,7 @@ const App = () => {
         <Route exact path="/characters">
           <Characters characters={people} movies={films} locations={locations} />
         </Route>
-        <Route exact path="/character/:characterid">
+        <Route exact path="/characters/:characterid">
           <CharacterDetails />
         </Route>
 
@@ -108,8 +108,16 @@ export default App;
  *
  *
  *
+ * //***********************************************************
  *
  *
+ * todo have films details page pull and display people data
+ * todo have films details page pull and display locations data
+ *
+ * todo character details page
+ *
+ * todo locations details page
+ * todo have locations details page pull and display movie data
  *
  *
  */

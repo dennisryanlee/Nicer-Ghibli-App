@@ -15,7 +15,9 @@ const Locations = (props) => {
             <div key={locale.id} className="card col-md-6">
               <div className="card-body">
                 <h5 className="card-title">{locale.name}</h5>
-                <button className="btn btn-success btn-sm">Details</button>
+                <Link to={`/locations/${locale.id}`} className="btn btn-success btn-sm">
+                  Details
+                </Link>
               </div>
             </div>
           ))}
