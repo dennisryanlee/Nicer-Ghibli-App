@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const LocationDetails = () => {
+const LocationDetails = (props) => {
   const { locationid } = useParams();
   const [locationData, setLocationData] = useState();
 
@@ -10,8 +10,6 @@ const LocationDetails = () => {
       .then((response) => response.json())
       .then((thisLocation) => setLocationData(thisLocation));
   }, []);
-
-  //!  fetch does not receive the character id properly - why?
 
   return (
     <>
@@ -24,6 +22,8 @@ const LocationDetails = () => {
                 Climate: {locationData?.climate} | Terrain: {locationData?.terrain} | Surface Water: {locationData?.surface_water}
               </h6>
               <p className="card-text">As seen in: nothing for now</p>
+              <p className="card-text">Residents: nothing for now</p>
+
               <footer className="blockquote-footer">
                 <a className="btn btn-success btn-sm" href={locationData?.url} target="_blank">
                   View my JSON

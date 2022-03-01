@@ -2,29 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Films = (props) => {
-  /**
-   * props.movies
-   * props.characters
-   * props.locations
-   */
-  const getCharacters = (movie) => {
-    let characterIDs = movie.people.map((char) => char.substring(39)).filter((onlystrings) => onlystrings); // characterIDs is an array of character IDs in a particular movie
-    /**
-     * go thru each character in the array, and for each character in that array, look at the array of movies
-     * if the character id is also found in the movie's list of characters, then add the character to the list
-     */
-    let names = [];
-    props.characters.forEach((propCharacter) => {
-      characterIDs.forEach((characterID) => {
-        if (characterID === propCharacter.id) {
-          names.push(propCharacter.name);
-        }
-      });
-    });
-
-    return names;
-  };
-
   return (
     <>
       <div className="container">

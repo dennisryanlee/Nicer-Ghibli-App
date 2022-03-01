@@ -18,6 +18,7 @@ const App = () => {
   const [films, setFilms] = useState([]);
   const [people, setPeople] = useState([]);
   const [locations, setLocations] = useState([]);
+  const history = useHistory(); // this creates the history object so that i can direct users to the error landing page if the fetch fails
 
   /**
    * props.movies
@@ -49,7 +50,7 @@ const App = () => {
     } catch (error) {
       //!change this to an implicit return and send user to ErrorLanding view
       // displays an error page if fetch is unsuccessful
-      //   history.push("/errorlanding");
+      history.push("/errorlanding");
     }
   };
 
@@ -71,21 +72,21 @@ const App = () => {
           <Films characters={people} movies={films} locations={locations} />
         </Route>
         <Route exact path="/films/:filmid">
-          <FilmDetails />
+          <FilmDetails characters={people} movies={films} locations={locations} />
         </Route>
 
         <Route exact path="/characters">
           <Characters characters={people} movies={films} locations={locations} />
         </Route>
         <Route exact path="/characters/:characterid">
-          <CharacterDetails />
+          <CharacterDetails characters={people} movies={films} locations={locations} />
         </Route>
 
         <Route exact path="/locations">
           <Locations characters={people} movies={films} locations={locations} />
         </Route>
         <Route exact path="/locations/:locationid">
-          <LocationDetails />
+          <LocationDetails characters={people} movies={films} locations={locations} />
         </Route>
 
         <Route exact path="/errorlanding">
@@ -100,21 +101,20 @@ export default App;
 
 /**
  *
- * todo make error landing page work
+ * ? make error landing page work
  * ? lab review video to get nicer film details for characters - 21:51 or 26:00
- * todo use ^^^ to do the same thing for other pages pulling other info
- * todo useParams thing for the details pages
+ * ? use ^^^ to do the same thing for other pages pulling other info
+ * ? useParams thing for the details pages
  * todo locations can incorporate people and films
- * todo make JSON buttons appear at the bottom of each card
- * todo make each movie card the same size as character lists / descriptions change their lengths
  *
  *
  *
  * //***********************************************************
  *
  *
- * todo have films details page pull and display people data
+ * ? have films details page pull and display people data
  * ? have films details page pull and display locations data - they do not point to any specific location
+ * ! the short circuit to conditionally display characters is not working as expected
  *
  * todo character details page
  * todo have character details page pull and display movie data .films

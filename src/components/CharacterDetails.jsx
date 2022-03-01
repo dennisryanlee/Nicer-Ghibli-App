@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const CharacterDetails = () => {
+const CharacterDetails = (props) => {
   const { characterid } = useParams();
   const [characterData, setCharacterData] = useState();
 
@@ -10,8 +10,6 @@ const CharacterDetails = () => {
       .then((response) => response.json())
       .then((thisCharacter) => setCharacterData(thisCharacter));
   }, [characterid]);
-
-  //!  fetch does not receive the character id properly - why?
 
   return (
     <>
