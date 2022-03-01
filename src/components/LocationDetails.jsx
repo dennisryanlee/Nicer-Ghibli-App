@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const LocationDetails = () => {
-  const { locationid } = useParams;
+  const { locationid } = useParams();
   const [locationData, setLocationData] = useState();
 
   useEffect(() => {

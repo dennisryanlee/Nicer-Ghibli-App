@@ -2,14 +2,14 @@ import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const CharacterDetails = () => {
-  const { characterid } = useParams;
+  const { characterid } = useParams();
   const [characterData, setCharacterData] = useState();
 
   useEffect(() => {
     fetch(`https://ghibliapi.herokuapp.com/people/${characterid}`)
       .then((response) => response.json())
       .then((thisCharacter) => setCharacterData(thisCharacter));
-  }, []);
+  }, [characterid]);
 
   //!  fetch does not receive the character id properly - why?
 

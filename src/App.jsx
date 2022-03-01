@@ -57,6 +57,8 @@ const App = () => {
     getData();
   }, []);
 
+  // console.log(films);
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -112,12 +114,14 @@ export default App;
  *
  *
  * todo have films details page pull and display people data
- * todo have films details page pull and display locations data
+ * ? have films details page pull and display locations data - they do not point to any specific location
  *
  * todo character details page
+ * todo have character details page pull and display movie data .films
  *
  * todo locations details page
- * todo have locations details page pull and display movie data
+ * todo have locations details page pull and display movie data   .films
+ * todo have locations details page pull and display characters data  .residents
  *
  *
  */
