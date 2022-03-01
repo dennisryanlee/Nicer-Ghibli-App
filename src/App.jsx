@@ -125,3 +125,5 @@ export default App;
  *
  *
  */
+
+//! console log within the film details component infinitely logs, something is wrong lol

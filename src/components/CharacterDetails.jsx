@@ -65,11 +65,13 @@ const CharacterDetails = (props) => {
               </h6>
               <p className="card-text">Appears in: </p>
 
-              <ul>
+              {/* <ul>
                 {getTitle().map((item) => (
                   <li key={item}>{item}</li>
                 ))}
-              </ul>
+              </ul> */}
+
+              {/* {characterData && getTitle().map((item) => <li key={item}>{item}</li>)} */}
 
               <footer className="blockquote-footer">
                 <a className="btn btn-success btn-sm" href={characterData?.url} target="_blank">
@@ -85,9 +87,3 @@ const CharacterDetails = (props) => {
 };
 
 export default CharacterDetails;
-
-{
-  /* <Link to="/characters" className="btn btn-primary">
-Back to Characters
-</Link> */
-}
