@@ -101,27 +101,27 @@ export default App;
 
 /**
  *
- * ? make error landing page work
- * ? lab review video to get nicer film details for characters - 21:51 or 26:00
- * ? use ^^^ to do the same thing for other pages pulling other info
- * ? useParams thing for the details pages
- * todo locations can incorporate people and films
+ * ?done make error landing page work
+ * ?done lab review video to get nicer film details for characters - 21:51 or 26:00
+ * ?done use ^^^ to do the same thing for other pages pulling other info
+ * ?done useParams thing for the details pages
+ * ?done locations can incorporate people and films
  *
  *
  *
  * //***********************************************************
  *
  *
- * ? have films details page pull and display people data
- * ? have films details page pull and display locations data - they do not point to any specific location
+ * ?done have films details page pull and display people data
+ * ?done have films details page pull and display locations data - they do not point to any specific location
  * ! the short circuit to conditionally display characters is not working as expected
  *
- * todo character details page
- * todo have character details page pull and display movie data .films
+ * ?done character details page
+ * ?done have character details page pull and display movie data .films
  *
- * todo locations details page
- * todo have locations details page pull and display movie data   .films
- * todo have locations details page pull and display characters data  .residents
+ * ?done locations details page
+ * ?done have locations details page pull and display movie data   .films
+ * ?done have locations details page pull and display characters data  .residents
  *
  *
  */

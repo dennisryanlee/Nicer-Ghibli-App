@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const LocationDetails = (props) => {
   const { locationid } = useParams();
@@ -46,6 +46,7 @@ const LocationDetails = (props) => {
         }
       });
     });
+    return residents;
   };
 
   // getResidents(); //? for logging
@@ -65,6 +66,7 @@ const LocationDetails = (props) => {
         }
       });
     });
+    return shows;
   };
 
   // getShows(); //? for logging
@@ -86,8 +88,23 @@ const LocationDetails = (props) => {
               <h6 className="card-subtitle mb-2 text-muted">
                 Climate: {locationData?.climate} | Terrain: {locationData?.terrain} | Surface Water: {locationData?.surface_water}
               </h6>
-              <p className="card-text">As seen in: nothing for now</p>
-              <p className="card-text">Residents: nothing for now</p>
+
+              <p className="card-text">As seen in: </p>
+              <ul>
+                {locationData &&
+                  getShows().map((item) => {
+                    <li key={item}>{item}</li>;
+                  })}
+              </ul>
+
+              <p className="card-text">Residents: </p>
+
+              <ul>
+                {locationData &&
+                  getResidents().map((item) => {
+                    <li key={item}>{item}</li>;
+                  })}
+              </ul>
 
               <footer className="blockquote-footer">
                 <a className="btn btn-success btn-sm" href={locationData?.url} target="_blank">
