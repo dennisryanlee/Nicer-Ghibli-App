@@ -4,11 +4,71 @@ import { useParams } from "react-router-dom";
 const LocationDetails = (props) => {
   const { locationid } = useParams();
   const [locationData, setLocationData] = useState();
+
+  // console.log(props.characters);
   /**
    * props.movies - array of movie objects
    * props.characters - array of movie characters
    * props.locations
    */
+
+  /**
+   * locationData is the object containing the location data
+   * locationData.residents is an array containing character URLs
+   * locationData.residents.map((person) => person.substring(39)) will make a new array containing just the residentIDs
+   *
+   * props.characters is the array of character objects
+   * props.characters[i].id is the character id
+   *
+   * once ids match, push props.characters[i].name into some 'residents' array
+   * ? ********************************************
+   *
+   * locationData.films is an array of film URLs
+   * locationData.films.map((film) => film.substring(39)) will make a new array containing just the film ID
+   *
+   * props.movies is the array of movie objects
+   * props.movies[i].id is the film ID
+   *
+   * once ids match, push props.movies[i].title into some 'films' array
+   */
+
+  let residents = []; // this will contain the residents' names, which will be pushed into from the getResidents function, and will be used to map over later to produce a JSX list
+  const residentIDs = locationData?.residents?.map((person) => person.substring(39)); // this is an array of residents' IDs
+
+  const getResidents = () => {
+    residentIDs?.forEach((resident) => {
+      // first, look at each resident
+      props.characters.forEach((character) => {
+        // then look at each character
+        if (resident === character.id) {
+          // if the IDs match, add the character's name to the residents array
+          residents.push(character.name);
+        }
+      });
+    });
+  };
+
+  // getResidents(); //? for logging
+  // console.log(residents);
+
+  let shows = []; // this will contain the show titles, which will be pushed into from the getShows function, and will be used to map over later to produce a JSX list
+  const showIDs = locationData?.films?.map((film) => film.substring(38)); // this is the array of film IDs
+
+  const getShows = () => {
+    showIDs?.forEach((show) => {
+      // first, look at each show
+      props.movies.forEach((movie) => {
+        // then look at each movie
+        if (show === movie.id) {
+          // if the show id from the location matches a movie's id, add the movie's title to the shows array
+          shows.push(movie.title);
+        }
+      });
+    });
+  };
+
+  // getShows(); //? for logging
+  // console.log(shows);
 
   useEffect(() => {
     fetch(`https://ghibliapi.herokuapp.com/locations/${locationid}`)

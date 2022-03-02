@@ -49,7 +49,7 @@ const FilmDetails = (props) => {
                 Directed by: {filmData?.director} | Produced by: {filmData?.producer}
               </h6>
               <p className="card-text">{filmData?.description}</p>
-              {console.log(cast)}
+              {/* {console.log(cast)} */}
               {cast.length >= 1 ? <h5>Characters:</h5> : <h5>No cast listed :/</h5>}
               <ul>{filmData && getCast().map((item) => <li key={item}>{item}</li>)}</ul>
 
