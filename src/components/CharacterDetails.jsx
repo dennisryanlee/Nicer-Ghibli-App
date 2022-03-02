@@ -4,14 +4,12 @@ import { useParams } from "react-router-dom";
 const CharacterDetails = (props) => {
   const { characterid } = useParams();
   const [characterData, setCharacterData] = useState();
-  console.log(props.movies);
+  const [shows, setShows] = useState([]);
   /**
    * props.movies - array of movie objects
    * props.characters - array of movie characters
    * props.locations
    */
-  // todo character details page
-  // todo have character details page pull and display movie data .films
 
   /**
    * characterData is the object containing the character data
@@ -26,8 +24,8 @@ const CharacterDetails = (props) => {
    *
    *
    */
-  let shows = []; // this will be the list of movie appearances for the character
   const getTitle = () => {
+    let tempShows = []; // this will be the temporary list of movie appearances for the character
     let movieIDs = characterData?.films.map((film) => film.substring(38)); // gets the id(s) of the movie the character is in
     movieIDs?.forEach((appearance) => {
       // first, look inside the list of movies a character is in
@@ -36,11 +34,11 @@ const CharacterDetails = (props) => {
         // then look inside the list of movies
         // movie is a single film
         if (appearance === movie.id) {
-          appearance.push(movie.title);
+          tempShows.push(movie.title);
         }
       });
     });
-    return shows;
+    return tempShows;
   };
 
   console.log(characterData);
@@ -49,7 +47,11 @@ const CharacterDetails = (props) => {
     fetch(`https://ghibliapi.herokuapp.com/people/${characterid}`)
       .then((response) => response.json())
       .then((thisCharacter) => setCharacterData(thisCharacter));
-  }, [characterid]);
+  }, []); // this just needs to run once
+
+  useEffect(() => {
+    setShows(getTitle());
+  }, [characterData]);
 
   return (
     <>
@@ -64,15 +66,7 @@ const CharacterDetails = (props) => {
                 Eye-color: {characterData?.eye_color} | Hair-Color: {characterData?.hair_color}
               </h6>
               <p className="card-text">Appears in: </p>
-
-              {/* <ul>
-                {getTitle().map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul> */}
-
-              {/* {characterData && getTitle().map((item) => <li key={item}>{item}</li>)} */}
-
+              <ul>{characterData && shows.map((item) => <li key={item}>{item}</li>)}</ul>
               <footer className="blockquote-footer">
                 <a className="btn btn-success btn-sm" href={characterData?.url} target="_blank">
                   View my JSON

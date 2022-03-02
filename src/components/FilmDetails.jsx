@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 const FilmDetails = (props) => {
   const { filmid } = useParams();
   const [filmData, setFilmData] = useState();
+  const [cast, setCast] = useState([]);
 
   /**
    * props.movies - array of movie objects
@@ -11,8 +12,8 @@ const FilmDetails = (props) => {
    * props.locations
    */
 
-  let cast = [];
   const getCast = () => {
+    let tempCast = [];
     let castIDs = filmData?.people.map((char) => char.substring(39)); // makes an array containing the cast IDs
     castIDs?.forEach((castMembers) => {
       // first, look inside the list of cast IDs
@@ -21,19 +22,23 @@ const FilmDetails = (props) => {
         // then look inside the list of characters
         if (castMembers === character.id) {
           // if a cast id matches a character id, add the character name to the cast array
-          cast.push(character.name);
+          tempCast.push(character.name);
         }
       });
     });
     // setCast(tempCast);
-    return cast; // this will be pushed into when a cast member from the list of characters is found.  this will then be mapped over for our page
+    return tempCast; // this will be pushed into when a cast member from the list of characters is found.  this will then be mapped over for our page
   };
 
   useEffect(() => {
     fetch(`https://ghibliapi.herokuapp.com/films/${filmid}`)
       .then((response) => response.json())
       .then((thisFilm) => setFilmData(thisFilm));
-  }, [filmData]);
+  }, []); // this will run right after the page loads.  this sets the film data
+
+  useEffect(() => {
+    setCast(getCast());
+  }, [filmData]); // this will run after the film data is set, which will then set the cast data
 
   return (
     <>
@@ -49,9 +54,8 @@ const FilmDetails = (props) => {
                 Directed by: {filmData?.director} | Produced by: {filmData?.producer}
               </h6>
               <p className="card-text">{filmData?.description}</p>
-              {/* {console.log(cast)} */}
               {cast.length >= 1 ? <h5>Characters:</h5> : <h5>No cast listed :/</h5>}
-              <ul>{filmData && getCast().map((item) => <li key={item}>{item}</li>)}</ul>
+              <ul>{filmData && cast.map((item) => <li key={item}>{item}</li>)}</ul>
 
               <footer className="blockquote-footer">
                 <a className="btn btn-success btn-sm" href={filmData?.url} target="_blank">

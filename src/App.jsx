@@ -20,45 +20,36 @@ const App = () => {
   const [locations, setLocations] = useState([]);
   const history = useHistory(); // this creates the history object so that i can direct users to the error landing page if the fetch fails
 
-  /**
+  /** the props object contains:
    * props.movies
    * props.characters
    * props.locations
    */
-
-  //   const history = useHistory();
 
   const getData = async () => {
     try {
       // fetches data from the api for people
       const response1 = await fetch("https://ghibliapi.herokuapp.com/people"); // this is the fetch
       const peopleData = await response1.json(); // parses the response as JSON data to produce a JS object
-      //   console.log(peopleData); // logs the people object
       setPeople(peopleData); // passes the people object to the people state, which is then sent to the components
 
       // fetches data from the api for films
       const response2 = await fetch("https://ghibliapi.herokuapp.com/films"); // this is the fetch
       const filmData = await response2.json(); // parses the response as JSON data to produce a JS object
-      //   console.log(filmData); // logs the films object
       setFilms(filmData); // passes the films object to the films state, which is then sent to the components
 
       // fetches data from the api for locations
       const response3 = await fetch("https://ghibliapi.herokuapp.com/locations"); // this is the fetch
       const locationdata = await response3.json(); // parses the response as JSON data to produce a JS object
-      // console.log(locationdata); // logs the locations object
       setLocations(locationdata); // passes the locations object to the locations state, which is then sent to the components
     } catch (error) {
-      //!change this to an implicit return and send user to ErrorLanding view
-      // displays an error page if fetch is unsuccessful
-      history.push("/errorlanding");
+      history.push("/errorlanding"); // displays an error page if fetch is unsuccessful
     }
   };
 
   useEffect(() => {
-    getData();
-  }, []);
-
-  // console.log(films);
+    getData(); // fetches people, films, and locations data after the home page renders
+  }, []); // empty dependency array means we only fetch this data once
 
   return (
     <BrowserRouter>
@@ -127,3 +118,15 @@ export default App;
  */
 
 //! console log within the film details component infinitely logs, something is wrong lol
+
+/**
+ * todo
+ * film details: does not show this properly
+ * {cast.length >= 1 ? <h5>Characters:</h5> : <h5>No cast listed :/</h5>}
+ *
+ * todo
+ * character details: get title function throws errors, does not display
+ *
+ * todo
+ * location details: neither function gets the relevant data to show
+ */
