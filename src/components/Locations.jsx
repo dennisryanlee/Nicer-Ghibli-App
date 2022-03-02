@@ -12,8 +12,8 @@ const Locations = (props) => {
       <div className="container">
         <div className="row justify-content-center mt-5">
           {props.locations.map((locale) => (
-            <div key={locale.id} className="card col-md-6">
-              <div className="card-body">
+            <div key={locale.id} className="card col-md-4">
+              <div className="d-flex flex-row justify-content-between card-body">
                 <h5 className="card-title">{locale.name}</h5>
                 <Link to={`/locations/${locale.id}`} className="btn btn-success btn-sm">
                   Details

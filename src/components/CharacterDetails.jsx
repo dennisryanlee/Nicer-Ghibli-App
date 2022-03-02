@@ -41,8 +41,6 @@ const CharacterDetails = (props) => {
     return tempShows;
   };
 
-  console.log(characterData);
-
   useEffect(() => {
     fetch(`https://ghibliapi.herokuapp.com/people/${characterid}`)
       .then((response) => response.json())

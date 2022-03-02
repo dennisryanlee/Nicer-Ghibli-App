@@ -34,9 +34,8 @@ const LocationDetails = (props) => {
    * once ids match, push props.movies[i].title into some 'films' array
    */
 
-  const residentIDs = locationData?.residents?.map((person) => person.substring(39)); // this is an array of residents' IDs
-
   const getResidents = () => {
+    const residentIDs = locationData?.residents?.map((person) => person.substring(39)); // this is an array of residents' IDs
     let tempResidents = []; // this will contain the residents' names, which will be pushed into from the getResidents function, and will be used to map over later to produce a JSX list
     residentIDs?.forEach((resident) => {
       // first, look at each resident
@@ -54,9 +53,8 @@ const LocationDetails = (props) => {
   // getResidents(); //? for logging
   // console.log(residents);
 
-  const showIDs = locationData?.films?.map((film) => film.substring(38)); // this is the array of film IDs
-
   const getShows = () => {
+    const showIDs = locationData?.films?.map((film) => film.substring(38)); // this is the array of film IDs
     let tempShows = []; // this will contain the show titles, which will be pushed into from the getShows function, and will be used to map over later to produce a JSX list
     showIDs?.forEach((show) => {
       // first, look at each show
@@ -97,21 +95,10 @@ const LocationDetails = (props) => {
               </h6>
 
               <p className="card-text">As seen in: </p>
-              <ul>
-                {locationData &&
-                  shows.map((item) => {
-                    <li key={item}>{item}</li>;
-                  })}
-              </ul>
+              <ul>{shows?.length ? shows.map((item) => <li key={item}>{item}</li>) : <li>No Data Found</li>}</ul>
 
               <p className="card-text">Residents: </p>
-
-              <ul>
-                {locationData &&
-                  residents.map((item) => {
-                    <li key={item}>{item}</li>;
-                  })}
-              </ul>
+              <ul>{residents?.length ? residents.map((item) => <li key={item}>{item}</li>) : <li>No Data Found</li>}</ul>
 
               <footer className="blockquote-footer">
                 <a className="btn btn-success btn-sm" href={locationData?.url} target="_blank">
@@ -127,9 +114,3 @@ const LocationDetails = (props) => {
 };
 
 export default LocationDetails;
-
-{
-  /* <Link to="/locations" className="btn btn-primary">
-    Back to Locations
-</Link> */
-}
